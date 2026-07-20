@@ -114,7 +114,12 @@ export default function Footer() {
             color: "#8a8a8a",
           }}
         >
-          <span>© 2027 MLK Campus · Mentions légales</span>
+          <span>
+            © 2027 MLK Campus ·{" "}
+            <Link href="/mentions-legales" className="navl" style={{ color: "#8a8a8a" }}>
+              Mentions légales
+            </Link>
+          </span>
         </div>
       </div>
     </div>
