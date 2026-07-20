@@ -10,10 +10,11 @@ export const metadata: Metadata = {
   Champs "À compléter" à renseigner avant mise en production publique.
 */
 const legal = {
-  raisonSociale: "À compléter",
-  formeJuridique: "À compléter (ex. SAS)",
+  raisonSociale: "MLK Formation",
+  formeJuridique: "SAS",
   capitalSocial: "À compléter",
-  siret: "À compléter",
+  siret: "851 941 542 00025",
+  ape: "85.59B",
   rcs: "À compléter",
   siegeSocial: "1 rue Martin Luther King, 94000 Créteil",
   directeurPublication: "À compléter",
@@ -92,6 +93,7 @@ export default function MentionsLegalesPage() {
             <Row label="Forme juridique" value={legal.formeJuridique} />
             <Row label="Capital social" value={legal.capitalSocial} />
             <Row label="SIRET" value={legal.siret} />
+            <Row label="Code APE" value={legal.ape} />
             <Row label="RCS" value={legal.rcs} />
             <Row label="Siège social" value={legal.siegeSocial} />
             <Row
