@@ -96,10 +96,19 @@ export default async function ContactPage() {
             </a>
           </div>
           <div
-            className="ph"
-            data-l={`Carte — ${settings.address}`}
-            style={{ height: 200, borderRadius: 16 }}
-          />
+            style={{
+              borderRadius: 16,
+              overflow: "hidden",
+              border: "1px solid rgba(22,22,22,.12)",
+            }}
+          >
+            <iframe
+              title={`Carte — ${settings.address}`}
+              src="https://www.openstreetmap.org/export/embed.html?bbox=2.4525759%2C48.7655563%2C2.4605759%2C48.7695563&layer=mapnik&marker=48.7675563%2C2.4565759"
+              style={{ width: "100%", height: 200, border: "none", display: "block" }}
+              loading="lazy"
+            />
+          </div>
         </div>
 
         <div>
