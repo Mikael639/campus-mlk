@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/forms";
 import { getSiteSettings } from "@/lib/siteSettings";
 import { getContactPage } from "@/lib/pages";
+import CampusMapLoader from "@/components/CampusMapLoader";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -102,12 +103,7 @@ export default async function ContactPage() {
               border: "1px solid rgba(22,22,22,.12)",
             }}
           >
-            <iframe
-              title={`Carte — ${settings.address}`}
-              src="https://www.openstreetmap.org/export/embed.html?bbox=2.4525759%2C48.7655563%2C2.4605759%2C48.7695563&layer=mapnik&marker=48.7675563%2C2.4565759"
-              style={{ width: "100%", height: 200, border: "none", display: "block" }}
-              loading="lazy"
-            />
+            <CampusMapLoader />
           </div>
         </div>
 
