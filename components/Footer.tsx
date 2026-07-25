@@ -1,16 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { NavItem } from "@/lib/navigation";
+import type { SiteSettings } from "@/lib/siteSettings";
 
-const links = [
-  { href: "/formations", label: "Nos formations" },
-  { href: "/candidater", label: "Candidater" },
-  { href: "/entreprises", label: "Entreprises" },
-  { href: "/devenir-formateur", label: "Devenir formateur" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
-];
-
-export default function Footer() {
+export default function Footer({
+  items,
+  settings,
+}: {
+  items: NavItem[];
+  settings: SiteSettings;
+}) {
   return (
     <div style={{ background: "#0f0f0f", color: "#c9c9c9" }}>
       <div
@@ -67,7 +66,7 @@ export default function Footer() {
               alignItems: "flex-start",
             }}
           >
-            {links.map((l) => (
+            {items.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
@@ -92,13 +91,15 @@ export default function Footer() {
             Coordonnées
           </div>
           <div style={{ fontSize: 13.5, lineHeight: 1.7, color: "#c9c9c9" }}>
-            1 rue Martin Luther King
+            {settings.address.split(",").map((line) => (
+              <span key={line}>
+                {line.trim()}
+                <br />
+              </span>
+            ))}
+            {settings.email}
             <br />
-            94000 Créteil
-            <br />
-            campus@mlkgrandparis.com
-            <br />
-            Tramway T9 · RER D
+            {settings.transport}
           </div>
         </div>
       </div>

@@ -96,3 +96,32 @@ export const FAQ_PAGE_QUERY = defineQuery(`
 export const CONTACT_PAGE_QUERY = defineQuery(`
   *[_id == "contactPage"][0] { title, intro }
 `);
+
+export const NAVIGATION_QUERY = defineQuery(`
+  *[_id == "navigation"][0] {
+    items[] { label, href },
+    ctaLabel,
+    ctaHref
+  }
+`);
+
+const pageImageFragment = /* groq */ `
+  asset->{ _id, url, metadata { lqip, dimensions } },
+  hotspot,
+  crop,
+  alt
+`;
+
+export const GENERIC_PAGE_QUERY = defineQuery(`
+  *[_type == "page" && slug.current == $slug][0] {
+    title, eyebrow, intro,
+    body[] {
+      ...,
+      _type == "image" => { ${pageImageFragment} }
+    }
+  }
+`);
+
+export const GENERIC_PAGE_SLUGS_QUERY = defineQuery(`
+  *[_type == "page" && defined(slug.current)].slug.current
+`);

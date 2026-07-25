@@ -3,17 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import type { Navigation } from "@/lib/navigation";
 
-const links = [
-  { href: "/formations", label: "Nos formations" },
-  { href: "/candidater", label: "Candidater" },
-  { href: "/entreprises", label: "Entreprises" },
-  { href: "/devenir-formateur", label: "Devenir formateur" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
-];
-
-export default function Nav() {
+export default function Nav({ items, ctaLabel, ctaHref }: Navigation) {
   const pathname = usePathname();
 
   return (
@@ -51,7 +43,7 @@ export default function Nav() {
           className="rnavlinks"
           style={{ display: "flex", gap: 30, alignItems: "center" }}
         >
-          {links.map((l) => (
+          {items.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -62,7 +54,7 @@ export default function Nav() {
           ))}
         </div>
         <Link
-          href="/candidater"
+          href={ctaHref}
           className="gobtn"
           style={{
             display: "flex",
@@ -76,7 +68,7 @@ export default function Nav() {
             fontWeight: 600,
           }}
         >
-          Candidater <span className="ar">→</span>
+          {ctaLabel} <span className="ar">→</span>
         </Link>
       </div>
     </div>

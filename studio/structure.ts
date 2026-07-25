@@ -6,6 +6,7 @@ import type {ComponentType} from 'react'
 
 const SINGLETONS = [
   'siteSettings',
+  'navigation',
   'homePage',
   'formationsPage',
   'candidaterPage',
@@ -48,9 +49,14 @@ export const structure: StructureResolver = (S) =>
             ]),
         ),
       S.divider(),
+      singleton(S, 'navigation', 'Menu de navigation', DocumentIcon),
       singleton(S, 'siteSettings', 'Coordonnées du site', CogIcon),
       S.divider(),
+      S.documentTypeListItem('page').title('Pages libres').icon(DocumentIcon),
+      S.divider(),
       ...S.documentTypeListItems().filter(
-        (listItem) => !SINGLETONS.includes(listItem.getId() as string),
+        (listItem) =>
+          !SINGLETONS.includes(listItem.getId() as string) &&
+          listItem.getId() !== 'page',
       ),
     ])
