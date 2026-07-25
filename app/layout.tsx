@@ -5,6 +5,7 @@ import { VisualEditing } from "next-sanity/visual-editing";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { SanityLive } from "@/lib/sanity/live";
 import { getNavigation } from "@/lib/navigation";
@@ -44,7 +45,9 @@ export default async function RootLayout({
     <html lang="fr" className={fraunces.variable}>
       <body>
         <Nav {...nav} />
-        <main style={{ minHeight: "60vh" }}>{children}</main>
+        <main style={{ minHeight: "60vh" }}>
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer items={nav.items} settings={settings} />
         <SanityLive />
         {isDraftMode && (
