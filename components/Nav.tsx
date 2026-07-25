@@ -41,9 +41,9 @@ export default function Nav() {
           <Image
             src="/images/logotype.png"
             alt="MLK Campus"
-            width={190}
-            height={46}
-            style={{ height: 46, width: "auto", display: "block" }}
+            width={240}
+            height={58}
+            style={{ height: 58, width: "auto", display: "block" }}
             priority
           />
         </Link>
