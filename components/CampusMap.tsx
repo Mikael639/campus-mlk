@@ -9,8 +9,8 @@ import "leaflet/dist/leaflet.css";
 const pin = L.divIcon({
   className: "",
   html: `<svg width="34" height="44" viewBox="0 0 34 44" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17 0C7.6 0 0 7.6 0 17c0 12.75 17 27 17 27s17-14.25 17-27C34 7.6 26.4 0 17 0Z" fill="#7a5cf0"/>
-    <circle cx="17" cy="17" r="7" fill="#f5f5f3"/>
+    <path d="M17 0C7.6 0 0 7.6 0 17c0 12.75 17 27 17 27s17-14.25 17-27C34 7.6 26.4 0 17 0Z" fill="#8d7cff"/>
+    <circle cx="17" cy="17" r="7" fill="#f9f9f9"/>
   </svg>`,
   iconSize: [34, 44],
   iconAnchor: [17, 44],

@@ -66,7 +66,7 @@ export default async function EntreprisesPage() {
             <div key={a} className="card" style={{ padding: 24 }}>
               <div
                 className="nr"
-                style={{ fontSize: 22, color: "#7a5cf0", marginBottom: 8 }}
+                style={{ fontSize: 22, color: "#8d7cff", marginBottom: 8 }}
               >
                 {String(i + 1).padStart(2, "0")}
               </div>
@@ -78,8 +78,8 @@ export default async function EntreprisesPage() {
           <div
             style={{
               padding: 24,
-              background: "#141414",
-              color: "#f5f5f3",
+              background: "#1a1a1a",
+              color: "#f9f9f9",
               borderRadius: 16,
               display: "flex",
               alignItems: "center",
@@ -139,7 +139,7 @@ export default async function EntreprisesPage() {
                   color: "#2b2b2b",
                 }}
               >
-                <span style={{ color: "#7a5cf0", fontWeight: 700 }}>✓</span> {a}
+                <span style={{ color: "#8d7cff", fontWeight: 700 }}>✓</span> {a}
               </div>
             ))}
           </div>

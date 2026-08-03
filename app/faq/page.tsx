@@ -48,8 +48,8 @@ export default async function FaqPage() {
           style={{
             maxWidth: 840,
             margin: "0 auto",
-            background: "#141414",
-            color: "#f5f5f3",
+            background: "#1a1a1a",
+            color: "#f9f9f9",
             borderRadius: 20,
             padding: "40px 44px",
             display: "flex",
@@ -74,8 +74,8 @@ export default async function FaqPage() {
               gap: 9,
               padding: "14px 26px",
               borderRadius: 40,
-              background: "#f5f5f3",
-              color: "#7a5cf0",
+              background: "#f9f9f9",
+              color: "#8d7cff",
               fontSize: 14,
               fontWeight: 700,
             }}

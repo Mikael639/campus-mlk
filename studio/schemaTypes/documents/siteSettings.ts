@@ -26,6 +26,26 @@ export const siteSettings = defineType({
       type: 'string',
       initialValue: 'Tramway T9 (Créteil-Préfecture) · RER D (Créteil-Pompadour)',
     }),
+    defineField({
+      name: 'footerText',
+      title: 'Pied de page — texte de présentation',
+      type: 'text',
+      rows: 3,
+    }),
+    defineField({
+      name: 'socials',
+      title: 'Réseaux sociaux',
+      description:
+        'Laissez vide pour masquer une icône. Seuls les réseaux renseignés apparaissent dans le pied de page.',
+      type: 'object',
+      options: {collapsible: true, collapsed: false},
+      fields: [
+        defineField({name: 'facebook', title: 'Facebook (URL)', type: 'url'}),
+        defineField({name: 'twitter', title: 'X / Twitter (URL)', type: 'url'}),
+        defineField({name: 'linkedin', title: 'LinkedIn (URL)', type: 'url'}),
+        defineField({name: 'instagram', title: 'Instagram (URL)', type: 'url'}),
+      ],
+    }),
   ],
   preview: {
     prepare() {

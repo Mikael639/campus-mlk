@@ -40,7 +40,7 @@ function Row({ label, value }: { label: string; value: string }) {
         color: "#2b2b2b",
       }}
     >
-      <span style={{ fontWeight: 600, color: "#161616", flex: "none" }}>
+      <span style={{ fontWeight: 600, color: "#1a1a1a", flex: "none" }}>
         {label} :
       </span>
       <span>{value}</span>

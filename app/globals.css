@@ -2,16 +2,16 @@
 
 /*
   Charte graphique MLK Campus
-  Porcelaine #f5f5f3 · Graphite #161616 · Iris #7a5cf0 (interactif)
-  Lilas #ad8ee8 (informatif) · Lime #cdf24f (accents fond sombre)
+  Porcelaine #f9f9f9 · Graphite #1a1a1a · Iris #8d7cff (interactif)
+  Lilas #ba7eee (informatif) · Lime #d1ff5e (accents fond sombre)
 */
 
 :root {
-  --porcelaine: #f5f5f3;
-  --graphite: #161616;
-  --iris: #7a5cf0;
-  --lilas: #ad8ee8;
-  --lime: #cdf24f;
+  --porcelaine: #f9f9f9;
+  --graphite: #1a1a1a;
+  --iris: #8d7cff;
+  --lilas: #ba7eee;
+  --lime: #d1ff5e;
 }
 
 * {
@@ -20,8 +20,8 @@
 
 body {
   margin: 0;
-  background: #f5f5f3;
-  color: #161616;
+  background: #f9f9f9;
+  color: #1a1a1a;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -49,7 +49,7 @@ a {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #ad8ee8;
+  color: #ba7eee;
 }
 
 /* Boutons */
@@ -59,8 +59,8 @@ a {
   gap: 9px;
   padding: 15px 26px;
   border-radius: 40px;
-  background: #141414;
-  color: #f5f5f3;
+  background: #1a1a1a;
+  color: #f9f9f9;
   font-size: 14.5px;
   font-weight: 600;
   cursor: pointer;
@@ -69,7 +69,7 @@ a {
   transition: background 0.3s, transform 0.3s;
 }
 .btnA:hover {
-  background: #6c4fe0;
+  background: #7660e8;
 }
 .btnO {
   display: inline-flex;
@@ -79,7 +79,7 @@ a {
   border-radius: 40px;
   border: 1px solid rgba(22, 22, 22, 0.22);
   background: transparent;
-  color: #161616;
+  color: #1a1a1a;
   font-size: 14.5px;
   font-weight: 600;
   cursor: pointer;
@@ -87,7 +87,7 @@ a {
   transition: border-color 0.3s, background 0.3s;
 }
 .btnO:hover {
-  border-color: #7a5cf0;
+  border-color: #8d7cff;
   background: rgba(122, 92, 240, 0.04);
 }
 
@@ -122,17 +122,17 @@ a {
   bottom: -5px;
   height: 1.5px;
   width: 0;
-  background: #141414;
+  background: #1a1a1a;
   transition: width 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .navl:hover {
-  color: #7a5cf0;
+  color: #8d7cff;
 }
 .navl:hover::after {
   width: 100%;
 }
 .navl.on {
-  color: #7a5cf0;
+  color: #8d7cff;
 }
 .navl.on::after {
   width: 100%;
@@ -147,12 +147,12 @@ a {
   background: #ffffff;
   font-family: inherit;
   font-size: 14px;
-  color: #161616;
+  color: #1a1a1a;
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 .fld:focus {
   outline: none;
-  border-color: #7a5cf0;
+  border-color: #8d7cff;
   box-shadow: 0 0 0 3px rgba(122, 92, 240, 0.12);
 }
 .lbl {
@@ -168,7 +168,7 @@ a {
 .chk {
   width: 18px;
   height: 18px;
-  accent-color: #7a5cf0;
+  accent-color: #8d7cff;
 }
 
 /* Cards */
@@ -223,7 +223,7 @@ a {
   border: none;
   font-family: inherit;
   padding: 22px 26px;
-  color: #161616;
+  color: #1a1a1a;
 }
 .faq-ic {
   flex: none;
@@ -231,7 +231,7 @@ a {
   height: 26px;
   border-radius: 50%;
   border: 1px solid rgba(122, 92, 240, 0.4);
-  color: #7a5cf0;
+  color: #8d7cff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,9 +242,9 @@ a {
 }
 .faq-ic.open {
   transform: rotate(45deg);
-  background: #141414;
-  color: #f5f5f3;
-  border-color: #7a5cf0;
+  background: #1a1a1a;
+  color: #f9f9f9;
+  border-color: #8d7cff;
 }
 .faq-a {
   max-height: 0;
@@ -287,6 +287,31 @@ a {
 }
 .scrim {
   animation: fin 0.4s both;
+}
+
+/* Schéma des engagements (section « Pourquoi ») */
+.engwrap {
+  display: grid;
+  grid-template-columns: 1fr 150px 1fr;
+  align-items: stretch;
+  gap: 0;
+}
+.engcol {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+}
+.engcenter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.englines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Responsive */
@@ -341,5 +366,20 @@ a {
   .rcta {
     flex-direction: column;
     align-items: flex-start !important;
+  }
+  /* Engagements : une seule colonne, logomark en tête, sans les traits */
+  .engwrap {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .engcol {
+    gap: 16px;
+  }
+  .engcenter {
+    order: -1;
+    margin-bottom: 4px;
+  }
+  .englines {
+    display: none;
   }
 }

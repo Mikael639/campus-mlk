@@ -24,12 +24,12 @@ export type HomePage = {
   heroImage?: SanityImage;
   stats: { _key: string; n: string; label: string }[];
   videoTitle: string;
+  videoText: string;
   videoLabel: string;
   formationsTitle: string;
+  pourquoiBadge: string;
   pourquoiTitle: string;
-  pourquoiText: string;
-  pourquoiItems: string[];
-  pourquoiWide: string;
+  engagements: { _key: string; title: string; text: string }[];
   ctaTitle: string;
   ctaText: string;
   ctaButton: string;

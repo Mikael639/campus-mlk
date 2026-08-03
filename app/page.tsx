@@ -6,33 +6,63 @@ import { getHomePage } from "@/lib/pages";
 import { urlForImage } from "@/lib/sanity/image";
 import FormationCard from "@/components/FormationCard";
 import VideoSection from "@/components/VideoSection";
+import BrandStripe from "@/components/BrandStripe";
+import EngagementsDiagram from "@/components/EngagementsDiagram";
+import Logomark from "@/components/Logomark";
 
 /* Tons violets dérivés de la charte (Iris/Lilas) pour les tuiles "chiffres clés". */
-const STAT_TONES = ["#7a5cf0", "#8f6ce8", "#ad8ee8", "#6c4fe0", "#9573ea"];
+const STAT_TONES = ["#8d7cff", "#a084ee", "#ba7eee", "#7a68e0", "#a897f2"];
 
-/* Le premier « o » du mot est remplacé par le logomark violet (charte). */
-function WordWithLogomark({ word }: { word: string }) {
-  const clean = stegaClean(word);
-  const i = clean.indexOf("o");
-  if (i === -1) return <>{clean}</>;
+/* Logomark à la taille du texte, pour remplacer une lettre dans un titre. */
+function InlineLogomark({ variant }: { variant: "iris" | "framboise" }) {
   return (
-    <span style={{ whiteSpace: "nowrap" }}>
-      {clean.slice(0, i)}
-      <Image
-        src="/images/logomark-iris.png"
-        alt="o"
-        width={36}
-        height={36}
-        style={{
-          width: ".6em",
-          height: ".6em",
-          display: "inline-block",
-          margin: "0 1px",
-          verticalAlign: "baseline",
-        }}
-      />
-      {clean.slice(i + 1)}
-    </span>
+    <Image
+      src={`/images/logomark-${variant}.png`}
+      alt="o"
+      width={36}
+      height={36}
+      style={{
+        width: ".6em",
+        height: ".6em",
+        display: "inline-block",
+        margin: "0 1px",
+        verticalAlign: "baseline",
+      }}
+    />
+  );
+}
+
+/*
+  Remplace le premier « o » du texte par le logomark (charte).
+  Seul le mot concerné est insécable, pour ne pas bloquer les retours
+  à la ligne du reste de la phrase.
+*/
+function TextWithLogomark({
+  text,
+  variant = "iris",
+}: {
+  text: string;
+  variant?: "iris" | "framboise";
+}) {
+  const clean = stegaClean(text);
+  const words = clean.split(" ");
+  const wordIndex = words.findIndex((w) => w.includes("o"));
+  if (wordIndex === -1) return <>{clean}</>;
+
+  const word = words[wordIndex];
+  const i = word.indexOf("o");
+  return (
+    <>
+      {words.slice(0, wordIndex).join(" ")}
+      {wordIndex > 0 && " "}
+      <span style={{ whiteSpace: "nowrap" }}>
+        {word.slice(0, i)}
+        <InlineLogomark variant={variant} />
+        {word.slice(i + 1)}
+      </span>
+      {wordIndex < words.length - 1 && " "}
+      {words.slice(wordIndex + 1).join(" ")}
+    </>
   );
 }
 
@@ -66,7 +96,7 @@ export default async function Home() {
               padding: "7px 15px",
               borderRadius: 30,
               background: "#f2e9fb",
-              color: "#ad8ee8",
+              color: "#ba7eee",
               fontSize: 11.5,
               fontWeight: 600,
               letterSpacing: ".08em",
@@ -85,9 +115,10 @@ export default async function Home() {
               margin: "0 0 24px",
             }}
           >
-            {page.heroTitleStart} <WordWithLogomark word={page.heroWordLogo} />{" "}
+            <TextWithLogomark text={page.heroTitleStart} variant="iris" />{" "}
+            <TextWithLogomark text={page.heroWordLogo} variant="framboise" />{" "}
             {page.heroTitleMiddle}{" "}
-            <em style={{ color: "#7a5cf0" }}>{page.heroTitleAccent}</em>
+            <em style={{ color: "#8d7cff" }}>{page.heroTitleAccent}</em>
           </h1>
           <p
             className="pg2"
@@ -103,7 +134,10 @@ export default async function Home() {
           </p>
           <div className="pg3 rbtns" style={{ display: "flex", gap: 14 }}>
             <Link href="/candidater" className="btnA gobtn">
-              {page.heroCta1} <span className="ar">→</span>
+              {page.heroCta1}{" "}
+              <span className="ar" style={{ display: "inline-flex" }}>
+                <Logomark size={17} variant="iris" />
+              </span>
             </Link>
             <Link href="/formations" className="btnO gobtn">
               {page.heroCta2} <span className="ar">→</span>
@@ -136,14 +170,7 @@ export default async function Home() {
 
       {/* Chiffres clés */}
       <div className="wrap" style={{ paddingTop: 60 }}>
-        <div
-          className="card"
-          style={{
-            padding: "40px 40px 34px",
-            textAlign: "center",
-            borderRadius: 28,
-          }}
-        >
+        <div style={{ textAlign: "center" }}>
           <div className="eyebrow" style={{ marginBottom: 10 }}>
             Chiffres clés
           </div>
@@ -165,9 +192,27 @@ export default async function Home() {
                   background: STAT_TONES[i % STAT_TONES.length],
                   borderRadius: 20,
                   padding: "22px 14px",
+                  position: "relative",
+                  overflow: "hidden",
                 }}
               >
-                <div className="nr" style={{ fontSize: 32, color: "#ffffff" }}>
+                {/* Astérisque en filigrane, débordant du coin bas-droit */}
+                <div
+                  style={{
+                    position: "absolute",
+                    right: -26,
+                    bottom: -26,
+                    opacity: 0.18,
+                    pointerEvents: "none",
+                  }}
+                  aria-hidden
+                >
+                  <Logomark size={104} variant="blanc" />
+                </div>
+                <div
+                  className="nr"
+                  style={{ fontSize: 32, color: "#ffffff", position: "relative" }}
+                >
                   {s.n}
                 </div>
                 <div
@@ -176,6 +221,7 @@ export default async function Home() {
                     color: "rgba(255,255,255,.88)",
                     marginTop: 6,
                     lineHeight: 1.35,
+                    position: "relative",
                   }}
                 >
                   {s.label}
@@ -186,17 +232,43 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* Vidéo d'introduction */}
-      <div className="wrap" style={{ paddingTop: 70 }}>
-        <div style={{ textAlign: "center", marginBottom: 30 }}>
-          <div className="eyebrow" style={{ marginBottom: 12 }}>
-            Immersion
+      {/* Vidéo d'introduction — bandeau sombre pleine largeur */}
+      <div style={{ marginTop: 70 }}>
+        <BrandStripe />
+        <div style={{ background: "#1a1a1a" }}>
+          <div
+            className="wrap rg1"
+            style={{
+              paddingTop: 56,
+              paddingBottom: 56,
+              display: "grid",
+              gridTemplateColumns: "1.15fr .85fr",
+              gap: 48,
+              alignItems: "center",
+            }}
+          >
+            <VideoSection label={page.videoLabel} />
+            <div style={{ textAlign: "center", color: "#f9f9f9" }}>
+              <h2
+                className="nr"
+                style={{ fontSize: 36, lineHeight: 1.12, margin: "0 0 16px" }}
+              >
+                {page.videoTitle}
+              </h2>
+              <p
+                style={{
+                  fontSize: 14.5,
+                  lineHeight: 1.6,
+                  color: "rgba(249,249,249,.75)",
+                  margin: 0,
+                }}
+              >
+                {page.videoText}
+              </p>
+            </div>
           </div>
-          <h2 className="nr" style={{ fontSize: 36, lineHeight: 1.1, margin: 0 }}>
-            {page.videoTitle}
-          </h2>
         </div>
-        <VideoSection label={page.videoLabel} />
+        <BrandStripe />
       </div>
 
       {/* Formations */}
@@ -242,80 +314,41 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* Pourquoi MLK Campus */}
-      <div className="wrap" style={{ paddingTop: 50 }}>
-        <div
-          className="rg1"
-          style={{
-            padding: "60px 48px",
-            background: "#141414",
-            color: "#f5f5f3",
-            borderRadius: 24,
-            display: "grid",
-            gridTemplateColumns: "1fr 1.1fr",
-            gap: 50,
-            alignItems: "center",
-          }}
-        >
-          <div>
-            <div
-              className="eyebrow"
-              style={{ color: "#cdf24f", marginBottom: 14 }}
-            >
-              Pourquoi MLK Campus
-            </div>
-            <h2
-              className="nr"
-              style={{ fontSize: 34, lineHeight: 1.12, margin: "0 0 16px" }}
-            >
-              {page.pourquoiTitle}
-            </h2>
-            <p
-              style={{
-                fontSize: 14.5,
-                lineHeight: 1.6,
-                color: "#cfcfcf",
-                margin: 0,
-              }}
-            >
-              {page.pourquoiText}
-            </p>
-          </div>
+      {/* Pourquoi MLK Campus — bandeau sombre pleine largeur */}
+      <div style={{ marginTop: 70 }}>
+        <BrandStripe />
+        <div style={{ background: "#1a1a1a", color: "#f9f9f9" }}>
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 14,
-            }}
+            className="wrap"
+            style={{ paddingTop: 56, paddingBottom: 64 }}
           >
-            {page.pourquoiItems.map((p) => (
-              <div
-                key={stegaClean(p)}
+            <div style={{ textAlign: "center", marginBottom: 44 }}>
+              <span
                 style={{
-                  padding: "16px 18px",
-                  border: "1px solid rgba(255,255,255,.16)",
-                  borderRadius: 14,
-                  fontSize: 13.5,
-                  lineHeight: 1.45,
+                  display: "inline-block",
+                  border: "1px solid rgba(255,255,255,.3)",
+                  borderRadius: 30,
+                  padding: "6px 16px",
+                  fontSize: 10.5,
+                  fontWeight: 700,
+                  letterSpacing: ".12em",
+                  textTransform: "uppercase",
+                  marginBottom: 18,
                 }}
               >
-                {p}
-              </div>
-            ))}
-            <div
-              style={{
-                padding: "16px 18px",
-                border: "1px solid rgba(255,255,255,.16)",
-                borderRadius: 14,
-                fontSize: 13.5,
-                lineHeight: 1.45,
-                gridColumn: "span 2",
-              }}
-            >
-              {page.pourquoiWide}
+                {page.pourquoiBadge}
+              </span>
+              <h2
+                className="nr"
+                style={{ fontSize: 36, lineHeight: 1.12, margin: 0 }}
+              >
+                {page.pourquoiTitle}
+              </h2>
             </div>
+            <EngagementsDiagram items={page.engagements} />
           </div>
         </div>
+        <BrandStripe />
       </div>
 
       {/* CTA final */}
@@ -323,6 +356,9 @@ export default async function Home() {
         className="wrap"
         style={{ paddingTop: 80, paddingBottom: 88, textAlign: "center" }}
       >
+        <div style={{ marginBottom: 22 }}>
+          <Logomark size={58} variant="principal" />
+        </div>
         <h2
           className="nr"
           style={{ fontSize: 42, lineHeight: 1.1, margin: "0 0 14px" }}
@@ -332,7 +368,11 @@ export default async function Home() {
         <p style={{ fontSize: 16, color: "#6b6b6b", margin: "0 0 28px" }}>
           {page.ctaText}
         </p>
-        <Link href="/candidater" className="btnA gobtn">
+        <Link
+          href="/candidater"
+          className="btnO gobtn"
+          style={{ padding: "13px 24px", fontSize: 13.5 }}
+        >
           {page.ctaButton} <span className="ar">→</span>
         </Link>
       </div>

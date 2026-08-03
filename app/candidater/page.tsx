@@ -79,7 +79,7 @@ export default async function CandidaterPage() {
                 key={item}
                 style={{ display: "flex", gap: 12, alignItems: "flex-start" }}
               >
-                <span style={{ color: "#7a5cf0", fontWeight: 700 }}>✓</span>
+                <span style={{ color: "#8d7cff", fontWeight: 700 }}>✓</span>
                 <span style={{ fontSize: 14, color: "#2b2b2b" }}>{item}</span>
               </div>
             ))}
@@ -89,8 +89,8 @@ export default async function CandidaterPage() {
           className="card"
           style={{
             padding: "32px 34px",
-            background: "#141414",
-            color: "#f5f5f3",
+            background: "#1a1a1a",
+            color: "#f9f9f9",
             border: "none",
           }}
         >
@@ -105,7 +105,7 @@ export default async function CandidaterPage() {
               >
                 <span
                   className="nr"
-                  style={{ color: "#cdf24f", fontSize: 18, width: 22 }}
+                  style={{ color: "#d1ff5e", fontSize: 18, width: 22 }}
                 >
                   {i + 1}
                 </span>
@@ -123,7 +123,7 @@ export default async function CandidaterPage() {
             borderRadius: 14,
             padding: "18px 24px",
             fontSize: 14,
-            color: "#7a5cf0",
+            color: "#8d7cff",
           }}
         >
           <strong>Bon à savoir —</strong> {page.goodToKnow}

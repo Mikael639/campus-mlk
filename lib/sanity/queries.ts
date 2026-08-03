@@ -45,7 +45,10 @@ export const FAQ_GROUPS_QUERY = defineQuery(`
 `);
 
 export const SITE_SETTINGS_QUERY = defineQuery(`
-  *[_type == "siteSettings"][0] { address, email, transport }
+  *[_type == "siteSettings"][0] {
+    address, email, transport, footerText,
+    socials { facebook, twitter, linkedin, instagram }
+  }
 `);
 
 export const HOME_PAGE_QUERY = defineQuery(`
@@ -54,9 +57,10 @@ export const HOME_PAGE_QUERY = defineQuery(`
     heroText, heroCta1, heroCta2,
     heroImage { ${imageFragment} },
     stats[] { _key, n, label },
-    videoTitle, videoLabel,
+    videoTitle, videoText, videoLabel,
     formationsTitle,
-    pourquoiTitle, pourquoiText, pourquoiItems, pourquoiWide,
+    pourquoiBadge, pourquoiTitle,
+    engagements[] { _key, title, text },
     ctaTitle, ctaText, ctaButton
   }
 `);

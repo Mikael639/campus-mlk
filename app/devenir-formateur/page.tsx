@@ -70,7 +70,7 @@ export default async function FormateurPage() {
                   color: "#2b2b2b",
                 }}
               >
-                <span style={{ color: "#7a5cf0", fontWeight: 700 }}>✓</span> {p}
+                <span style={{ color: "#8d7cff", fontWeight: 700 }}>✓</span> {p}
               </div>
             ))}
           </div>
@@ -79,8 +79,8 @@ export default async function FormateurPage() {
           className="card"
           style={{
             padding: "32px 34px",
-            background: "#141414",
-            color: "#f5f5f3",
+            background: "#1a1a1a",
+            color: "#f9f9f9",
             border: "none",
           }}
         >
@@ -111,7 +111,7 @@ export default async function FormateurPage() {
                 paddingBottom: 12,
               }}
             >
-              <span style={{ color: "#cdf24f" }}>Statut —</span>{" "}
+              <span style={{ color: "#d1ff5e" }}>Statut —</span>{" "}
               {page.statut}
             </div>
             <div
@@ -120,7 +120,7 @@ export default async function FormateurPage() {
                 paddingBottom: 12,
               }}
             >
-              <span style={{ color: "#cdf24f" }}>Rémunération —</span>{" "}
+              <span style={{ color: "#d1ff5e" }}>Rémunération —</span>{" "}
               {page.remuneration}
             </div>
             <div
@@ -129,10 +129,10 @@ export default async function FormateurPage() {
                 paddingBottom: 12,
               }}
             >
-              <span style={{ color: "#cdf24f" }}>Lieu —</span> {page.lieu}
+              <span style={{ color: "#d1ff5e" }}>Lieu —</span> {page.lieu}
             </div>
             <div>
-              <span style={{ color: "#cdf24f" }}>Accès —</span> {page.acces}
+              <span style={{ color: "#d1ff5e" }}>Accès —</span> {page.acces}
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@ export default async function FormateurPage() {
                 padding: "10px 18px",
                 borderRadius: 30,
                 background: "#eee9fb",
-                color: "#7a5cf0",
+                color: "#8d7cff",
                 fontSize: 13.5,
                 fontWeight: 500,
               }}

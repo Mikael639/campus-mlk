@@ -30,7 +30,7 @@ const components: PortableTextComponents = {
     blockquote: ({ children }) => (
       <blockquote
         style={{
-          borderLeft: "3px solid #7a5cf0",
+          borderLeft: "3px solid #8d7cff",
           margin: "24px 0",
           padding: "4px 0 4px 20px",
           fontStyle: "italic",
@@ -45,14 +45,14 @@ const components: PortableTextComponents = {
     link: ({ children, value }) => (
       <a
         href={value?.href}
-        style={{ color: "#7a5cf0", fontWeight: 600 }}
+        style={{ color: "#8d7cff", fontWeight: 600 }}
         target={value?.href?.startsWith("http") ? "_blank" : undefined}
         rel={value?.href?.startsWith("http") ? "noopener noreferrer" : undefined}
       >
         {children}
       </a>
     ),
-    strong: ({ children }) => <strong style={{ color: "#161616" }}>{children}</strong>,
+    strong: ({ children }) => <strong style={{ color: "#1a1a1a" }}>{children}</strong>,
   },
   list: {
     bullet: ({ children }) => (

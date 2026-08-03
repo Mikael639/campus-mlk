@@ -27,7 +27,7 @@ export default function VideoSection({
           position: "relative",
           borderRadius: 28,
           overflow: "hidden",
-          background: "#141414",
+          background: "#1a1a1a",
         }}
       >
       <video
@@ -69,7 +69,7 @@ export default function VideoSection({
               width: 86,
               height: 86,
               borderRadius: "50%",
-              background: "#cdf24f",
+              background: "#d1ff5e",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -82,7 +82,7 @@ export default function VideoSection({
               viewBox="0 0 24 24"
               style={{ marginLeft: 4 }}
             >
-              <path d="M6 3.8 20.2 12 6 20.2Z" fill="#141414" />
+              <path d="M6 3.8 20.2 12 6 20.2Z" fill="#1a1a1a" />
             </svg>
           </span>
           <span

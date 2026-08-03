@@ -47,7 +47,7 @@ export default async function FormationsPage() {
         </p>
         <p style={{ fontSize: 16, lineHeight: 1.65, color: "#4a4a4a", margin: 0 }}>
           {page.intro2}{" "}
-          <strong style={{ color: "#7a5cf0" }}>{page.highlight}</strong>
+          <strong style={{ color: "#8d7cff" }}>{page.highlight}</strong>
         </p>
       </div>
       <div className="wrap" style={{ paddingTop: 30, paddingBottom: 30 }}>

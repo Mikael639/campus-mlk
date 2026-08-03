@@ -58,7 +58,7 @@ export default async function ContactPage() {
             <div
               style={{
                 fontSize: 12,
-                color: "#7a5cf0",
+                color: "#8d7cff",
                 fontWeight: 600,
                 letterSpacing: ".08em",
                 textTransform: "uppercase",
@@ -79,7 +79,7 @@ export default async function ContactPage() {
               )}
             </div>
             <div style={{ marginTop: 18, fontSize: 13, color: "#6b6b6b" }}>
-              <span style={{ color: "#7a5cf0", fontWeight: 600 }}>
+              <span style={{ color: "#8d7cff", fontWeight: 600 }}>
                 Transport —
               </span>{" "}
               {settings.transport}
@@ -91,7 +91,7 @@ export default async function ContactPage() {
             </div>
             <a
               href={`mailto:${settings.email}`}
-              style={{ fontSize: 15, color: "#7a5cf0", fontWeight: 600 }}
+              style={{ fontSize: 15, color: "#8d7cff", fontWeight: 600 }}
             >
               {settings.email}
             </a>

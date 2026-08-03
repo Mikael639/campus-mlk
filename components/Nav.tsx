@@ -4,9 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import type { Navigation } from "@/lib/navigation";
+import Logomark from "./Logomark";
 
 export default function Nav({ items, ctaLabel, ctaHref }: Navigation) {
   const pathname = usePathname();
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <div
@@ -14,7 +17,7 @@ export default function Nav({ items, ctaLabel, ctaHref }: Navigation) {
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: "rgba(245,245,243,.86)",
+        background: "rgba(249,249,249,.86)",
         backdropFilter: "blur(12px)",
         borderBottom: "1px solid rgba(22,22,22,.1)",
       }}
@@ -47,7 +50,7 @@ export default function Nav({ items, ctaLabel, ctaHref }: Navigation) {
             <Link
               key={l.href}
               href={l.href}
-              className={pathname.startsWith(l.href) ? "navl on" : "navl"}
+              className={isActive(l.href) ? "navl on" : "navl"}
             >
               {l.label}
             </Link>
@@ -60,15 +63,16 @@ export default function Nav({ items, ctaLabel, ctaHref }: Navigation) {
             display: "flex",
             alignItems: "center",
             gap: 8,
-            padding: "11px 20px",
-            border: "1px solid #7a5cf0",
+            padding: "11px 22px",
+            border: "none",
             borderRadius: 40,
-            color: "#7a5cf0",
+            background: "#8d7cff",
+            color: "#ffffff",
             fontSize: 13,
             fontWeight: 600,
           }}
         >
-          {ctaLabel} <span className="ar">→</span>
+          {ctaLabel} <Logomark size={17} variant="blanc" />
         </Link>
       </div>
     </div>

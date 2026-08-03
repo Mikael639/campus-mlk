@@ -3,7 +3,7 @@ import Image from "next/image";
 import { stegaClean } from "next-sanity";
 import type { Formation } from "@/lib/formations";
 import { urlForImage } from "@/lib/sanity/image";
-import AsteriskIcon from "./AsteriskIcon";
+import Logomark from "./Logomark";
 
 /*
   Carte formation colorée par filière — deux tailles :
@@ -75,7 +75,7 @@ export default function FormationCard({
               display: "inline-flex",
               alignItems: "center",
               gap: 5,
-              background: "#141414",
+              background: "#1a1a1a",
               color: "#ffffff",
               fontSize: isList ? 10 : 9.5,
               fontWeight: 700,
@@ -85,14 +85,14 @@ export default function FormationCard({
               borderRadius: 20,
             }}
           >
-            <AsteriskIcon />
+            <Logomark size={10} variant="blanc" />
             {f.cat}
           </span>
           <span
             style={{
               whiteSpace: "nowrap",
               background: "#ffffff",
-              color: "#141414",
+              color: "#1a1a1a",
               fontSize: isList ? 10 : 9.5,
               fontWeight: 700,
               letterSpacing: ".04em",
@@ -130,7 +130,7 @@ export default function FormationCard({
           style={{
             fontSize: isList ? 27 : 23,
             lineHeight: 1.05,
-            color: "#141414",
+            color: "#1a1a1a",
             marginBottom: isList ? 10 : 8,
           }}
         >
@@ -150,7 +150,7 @@ export default function FormationCard({
         <span
           style={{
             display: "inline-block",
-            background: "#141414",
+            background: "#1a1a1a",
             color: "#ffffff",
             fontSize: isList ? 11 : 10.5,
             fontWeight: 700,

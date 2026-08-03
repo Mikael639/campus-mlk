@@ -27,8 +27,8 @@ function Confirmation({ title, message }: { title: string; message: string }) {
       style={{
         padding: 46,
         textAlign: "center",
-        background: "#141414",
-        color: "#f5f5f3",
+        background: "#1a1a1a",
+        color: "#f9f9f9",
         border: "none",
       }}
     >
@@ -37,8 +37,8 @@ function Confirmation({ title, message }: { title: string; message: string }) {
           width: 56,
           height: 56,
           borderRadius: "50%",
-          background: "#f5f5f3",
-          color: "#7a5cf0",
+          background: "#f9f9f9",
+          color: "#8d7cff",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -258,7 +258,7 @@ export function FormateurForm() {
           }}
         >
           Glissez votre CV ici ou{" "}
-          <span style={{ color: "#7a5cf0", fontWeight: 600 }}>
+          <span style={{ color: "#8d7cff", fontWeight: 600 }}>
             parcourez vos fichiers
           </span>
           <div style={{ fontSize: 11.5, marginTop: 4, color: "#9a9a9a" }}>

@@ -11,6 +11,7 @@ import {
   MODALITES,
 } from "@/lib/formations";
 import { urlForImage } from "@/lib/sanity/image";
+import Logomark from "@/components/Logomark";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -49,7 +50,7 @@ export default async function FormationPage({ params }: Props) {
             Nos formations
           </Link>
           <span>/</span>
-          <span style={{ color: "#161616" }}>{f.title}</span>
+          <span style={{ color: "#1a1a1a" }}>{f.title}</span>
         </div>
       </div>
 
@@ -74,7 +75,7 @@ export default async function FormationPage({ params }: Props) {
               padding: "7px 14px",
               borderRadius: 30,
               background: color,
-              color: "#141414",
+              color: "#1a1a1a",
               fontSize: 11,
               fontWeight: 700,
               letterSpacing: ".06em",
@@ -93,7 +94,7 @@ export default async function FormationPage({ params }: Props) {
           <div
             style={{
               fontSize: 14,
-              color: "#ad8ee8",
+              color: "#ba7eee",
               fontWeight: 600,
               marginBottom: 20,
             }}
@@ -114,7 +115,10 @@ export default async function FormationPage({ params }: Props) {
           </p>
           <div className="rbtns" style={{ display: "flex", gap: 14 }}>
             <Link href="/candidater" className="btnA gobtn">
-              Candidater à cette formation <span className="ar">→</span>
+              Candidater à cette formation{" "}
+              <span className="ar" style={{ display: "inline-flex" }}>
+                <Logomark size={17} variant="iris" />
+              </span>
             </Link>
             <Link href="/entreprises" className="btnO gobtn">
               Recruter un apprenti <span className="ar">→</span>
@@ -225,7 +229,7 @@ export default async function FormationPage({ params }: Props) {
                   padding: "10px 18px",
                   borderRadius: 30,
                   background: color,
-                  color: "#141414",
+                  color: "#1a1a1a",
                   fontSize: 13.5,
                   fontWeight: 600,
                 }}
@@ -240,8 +244,8 @@ export default async function FormationPage({ params }: Props) {
         <div className="rstatic" style={{ position: "sticky", top: 96 }}>
           <div
             style={{
-              background: "#141414",
-              color: "#f5f5f3",
+              background: "#1a1a1a",
+              color: "#f9f9f9",
               borderRadius: 20,
               padding: "30px 30px 34px",
               borderTop: `5px solid ${color}`,
@@ -253,7 +257,7 @@ export default async function FormationPage({ params }: Props) {
                 fontWeight: 600,
                 letterSpacing: ".12em",
                 textTransform: "uppercase",
-                color: "#cdf24f",
+                color: "#d1ff5e",
                 marginBottom: 20,
               }}
             >
@@ -286,7 +290,7 @@ export default async function FormationPage({ params }: Props) {
                   }
                 >
                   <div
-                    style={{ color: "#cdf24f", fontSize: 12, marginBottom: 3 }}
+                    style={{ color: "#d1ff5e", fontSize: 12, marginBottom: 3 }}
                   >
                     {label}
                   </div>
@@ -306,13 +310,16 @@ export default async function FormationPage({ params }: Props) {
                 gap: 9,
                 padding: 14,
                 borderRadius: 40,
-                background: "#f5f5f3",
-                color: "#7a5cf0",
+                background: "#f9f9f9",
+                color: "#8d7cff",
                 fontSize: 14,
                 fontWeight: 700,
               }}
             >
-              Candidater <span className="ar">→</span>
+              Candidater{" "}
+              <span className="ar" style={{ display: "inline-flex" }}>
+                <Logomark size={17} variant="iris" />
+              </span>
             </Link>
           </div>
         </div>
