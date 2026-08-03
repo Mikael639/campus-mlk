@@ -7,6 +7,9 @@ import { urlForImage } from "@/lib/sanity/image";
 import FormationCard from "@/components/FormationCard";
 import VideoSection from "@/components/VideoSection";
 
+/* Tons violets dérivés de la charte (Iris/Lilas) pour les tuiles "chiffres clés". */
+const STAT_TONES = ["#7a5cf0", "#8f6ce8", "#ad8ee8", "#6c4fe0", "#9573ea"];
+
 /* Le premier « o » du mot est remplacé par le logomark violet (charte). */
 function WordWithLogomark({ word }: { word: string }) {
   const clean = stegaClean(word);
@@ -132,39 +135,54 @@ export default async function Home() {
       </div>
 
       {/* Chiffres clés */}
-      <div
-        style={{
-          borderTop: "1px solid rgba(22,22,22,.1)",
-          borderBottom: "1px solid rgba(22,22,22,.1)",
-        }}
-      >
+      <div className="wrap" style={{ paddingTop: 60 }}>
         <div
-          className="wrap rstats"
+          className="card"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(5,1fr)",
-            padding: 0,
+            padding: "40px 40px 34px",
+            textAlign: "center",
+            borderRadius: 28,
           }}
         >
-          {page.stats.map((s, i) => (
-            <div
-              key={s._key}
-              style={{
-                padding: "30px 26px",
-                borderRight:
-                  i < page.stats.length - 1
-                    ? "1px solid rgba(22,22,22,.08)"
-                    : undefined,
-              }}
-            >
-              <div className="nr" style={{ fontSize: 34, color: "#7a5cf0" }}>
-                {s.n}
+          <div className="eyebrow" style={{ marginBottom: 10 }}>
+            Chiffres clés
+          </div>
+          <h2 className="nr" style={{ fontSize: 28, margin: "0 0 28px" }}>
+            MLK Campus en chiffres
+          </h2>
+          <div
+            className="rstats"
+            style={{
+              display: "grid",
+              gridTemplateColumns: `repeat(${page.stats.length}, 1fr)`,
+              gap: 14,
+            }}
+          >
+            {page.stats.map((s, i) => (
+              <div
+                key={s._key}
+                style={{
+                  background: STAT_TONES[i % STAT_TONES.length],
+                  borderRadius: 20,
+                  padding: "22px 14px",
+                }}
+              >
+                <div className="nr" style={{ fontSize: 32, color: "#ffffff" }}>
+                  {s.n}
+                </div>
+                <div
+                  style={{
+                    fontSize: 12,
+                    color: "rgba(255,255,255,.88)",
+                    marginTop: 6,
+                    lineHeight: 1.35,
+                  }}
+                >
+                  {s.label}
+                </div>
               </div>
-              <div style={{ fontSize: 12.5, color: "#6b6b6b", marginTop: 4 }}>
-                {s.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
