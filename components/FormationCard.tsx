@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "motion/react";
 import { stegaClean } from "next-sanity";
 import type { Formation } from "@/lib/formations";
 import { urlForImage } from "@/lib/sanity/image";
 import Logomark from "./Logomark";
+
+const MotionLink = motion.create(Link);
 
 /*
   Carte formation colorée par filière — deux tailles :
@@ -19,17 +24,24 @@ export default function FormationCard({
 }) {
   const isList = variant === "list";
   const color = stegaClean(f.color);
+
   return (
-    <Link
+    <MotionLink
       href={`/formations/${stegaClean(f.slug)}`}
-      className="lift"
+      whileHover={{ y: -7, scale: 1.015 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
       style={{
         background: color,
         borderRadius: isList ? 30 : 28,
         padding: isList ? "16px 16px 26px" : "14px 14px 22px",
         display: "flex",
         flexDirection: "column",
+        textDecoration: "none",
+        color: "inherit",
+        boxShadow: "0 10px 30px -15px rgba(20,20,20,0.12)",
       }}
+      className="gobtn"
     >
       <div style={{ position: "relative", marginBottom: isList ? 20 : 18 }}>
         {f.image?.asset ? (
@@ -113,6 +125,7 @@ export default function FormationCard({
             position: "absolute",
             right: isList ? 2 : 0,
             bottom: isList ? -20 : -18,
+            pointerEvents: "none",
           }}
         />
       </div>
@@ -149,7 +162,9 @@ export default function FormationCard({
         </div>
         <span
           style={{
-            display: "inline-block",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
             background: "#1a1a1a",
             color: "#ffffff",
             fontSize: isList ? 11 : 10.5,
@@ -160,9 +175,9 @@ export default function FormationCard({
             borderRadius: isList ? 22 : 20,
           }}
         >
-          Découvrir
+          Découvrir <span className="ar">→</span>
         </span>
       </div>
-    </Link>
+    </MotionLink>
   );
 }

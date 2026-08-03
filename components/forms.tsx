@@ -20,39 +20,53 @@ function useSent() {
   return { sent, handleSubmit };
 }
 
+import { motion } from "motion/react";
+
 function Confirmation({ title, message }: { title: string; message: string }) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scale: 0.92, y: 16 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: [0.215, 0.61, 0.355, 1] }}
       className="scrim card"
       style={{
-        padding: 46,
+        padding: 48,
         textAlign: "center",
         background: "#1a1a1a",
         color: "#f9f9f9",
-        border: "none",
+        border: "1px solid rgba(255,255,255,0.12)",
+        borderRadius: 24,
+        boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3)",
       }}
     >
-      <div
+      <motion.div
+        initial={{ scale: 0, rotate: -30 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ delay: 0.15, duration: 0.4, type: "spring", stiffness: 260, damping: 20 }}
         style={{
-          width: 56,
-          height: 56,
+          width: 60,
+          height: 60,
           borderRadius: "50%",
-          background: "#f9f9f9",
-          color: "#8d7cff",
+          background: "#8d7cff",
+          color: "#ffffff",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: 26,
-          margin: "0 auto 18px",
+          fontSize: 28,
+          fontWeight: 700,
+          margin: "0 auto 20px",
+          boxShadow: "0 0 24px rgba(141, 124, 255, 0.5)",
         }}
       >
         ✓
-      </div>
-      <h3 className="nr" style={{ fontSize: 26, margin: "0 0 10px" }}>
+      </motion.div>
+      <h3 className="nr" style={{ fontSize: 28, margin: "0 0 12px" }}>
         {title}
       </h3>
-      <p style={{ fontSize: 15, color: "#cfcfcf", margin: 0 }}>{message}</p>
-    </div>
+      <p style={{ fontSize: 15.5, color: "rgba(249,249,249,0.8)", margin: 0, lineHeight: 1.5 }}>
+        {message}
+      </p>
+    </motion.div>
   );
 }
 
