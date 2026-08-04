@@ -44,33 +44,40 @@ export default function FormationCard({
       className="gobtn"
     >
       <div style={{ position: "relative", marginBottom: isList ? 20 : 18 }}>
-        {f.image?.asset ? (
-          <Image
-            src={urlForImage(f.image)
-              .width(800)
-              .height(isList ? 400 : 340)
-              .url()}
-            alt={f.image.alt ?? ""}
-            width={800}
-            height={isList ? 400 : 340}
-            style={{
-              width: "100%",
-              height: isList ? 180 : 150,
-              objectFit: "cover",
-              borderRadius: isList ? 22 : 20,
-              display: "block",
-            }}
-          />
-        ) : (
-          <div
-            className="ph"
-            data-l={f.ph}
-            style={{
-              height: isList ? 180 : 150,
-              borderRadius: isList ? 22 : 20,
-            }}
-          />
-        )}
+        <div
+          style={{
+            overflow: "hidden",
+            borderRadius: isList ? 22 : 20,
+            height: isList ? 180 : 150,
+          }}
+        >
+          {f.image?.asset ? (
+            <Image
+              className="imgzoom"
+              src={urlForImage(f.image)
+                .width(800)
+                .height(isList ? 400 : 340)
+                .url()}
+              alt={f.image.alt ?? ""}
+              width={800}
+              height={isList ? 400 : 340}
+              style={{
+                width: "100%",
+                height: isList ? 180 : 150,
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          ) : (
+            <div
+              className="ph imgzoom"
+              data-l={f.ph}
+              style={{
+                height: isList ? 180 : 150,
+              }}
+            />
+          )}
+        </div>
         <div
           style={{
             position: "absolute",

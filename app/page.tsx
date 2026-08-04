@@ -9,7 +9,6 @@ import VideoSection from "@/components/VideoSection";
 import BrandStripe from "@/components/BrandStripe";
 import EngagementsDiagram from "@/components/EngagementsDiagram";
 import Logomark from "@/components/Logomark";
-import HighlightedText from "@/components/HighlightedText";
 import {
   ScrollReveal,
   StaggerGroup,
@@ -18,13 +17,6 @@ import {
 
 /* Tons violets dérivés de la charte (Iris/Lilas) pour les tuiles "chiffres clés". */
 const STAT_TONES = ["#8d7cff", "#a084ee", "#ba7eee", "#7a68e0", "#a897f2"];
-
-/* Tons cycliques pour les tuiles "promesse" — cohérents avec le diagramme "Pourquoi". */
-const PROMESSE_TONES: { bg: string; icon: string }[] = [
-  { bg: "#f2e9fb", icon: "#8d7cff" },
-  { bg: "#fbeaf1", icon: "#e84d72" },
-  { bg: "#f5edfc", icon: "#ba7eee" },
-];
 
 /* Logomark à la taille du texte, pour remplacer une lettre dans un titre. */
 function InlineLogomark({
@@ -137,12 +129,14 @@ export default async function Home() {
                 margin: "0 0 24px",
               }}
             >
-              <TextWithLogomark text={page.heroTitleStart} variant="iris" />{" "}
+              <TextWithLogomark text={page.heroTitleStart} variant="iris" />
+              <br />
               <TextWithLogomark
                 text={page.heroWordLogo}
                 variant="framboise"
                 scale={0.85}
-              />{" "}
+              />
+              <br />
               {page.heroTitleMiddle}{" "}
               <em style={{ color: "#8d7cff" }}>{page.heroTitleAccent}</em>
             </h1>
@@ -156,7 +150,7 @@ export default async function Home() {
                 margin: "0 0 34px",
               }}
             >
-              <HighlightedText text={page.heroText} highlight="situé à" />
+              {page.heroText}
             </p>
             <div className="pg3 rbtns" style={{ display: "flex", gap: 14 }}>
               <Link href="/candidater" className="btnA gobtn">
@@ -195,83 +189,8 @@ export default async function Home() {
         </div>
       </ScrollReveal>
 
-      {/* Promesse */}
-      <div className="wrap" style={{ paddingTop: 10 }}>
-        <ScrollReveal direction="up" distance={16}>
-          <StaggerGroup
-            className="rg1"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3,1fr)",
-              gap: 18,
-            }}
-          >
-            {page.promesse.map((item, i) => {
-              const tone = PROMESSE_TONES[i % PROMESSE_TONES.length];
-              return (
-                <StaggerItem key={item}>
-                  <div
-                    className="card lift"
-                    style={{
-                      background: tone.bg,
-                      border: "1px solid rgba(22,22,22,0.06)",
-                      borderRadius: 22,
-                      padding: "26px 24px",
-                      height: "100%",
-                      position: "relative",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <div
-                      style={{
-                        position: "absolute",
-                        right: -18,
-                        bottom: -18,
-                        opacity: 0.12,
-                        pointerEvents: "none",
-                      }}
-                      aria-hidden
-                    >
-                      <Logomark size={80} variant="principal" />
-                    </div>
-                    <span
-                      style={{
-                        position: "relative",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: 44,
-                        height: 44,
-                        borderRadius: "50%",
-                        background: tone.icon,
-                        marginBottom: 18,
-                        boxShadow: `0 10px 22px -10px ${tone.icon}`,
-                      }}
-                    >
-                      <Logomark size={20} variant="blanc" />
-                    </span>
-                    <p
-                      className="nr"
-                      style={{
-                        position: "relative",
-                        fontSize: 17.5,
-                        lineHeight: 1.35,
-                        color: "#1a1a1a",
-                        margin: 0,
-                      }}
-                    >
-                      {item}
-                    </p>
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </StaggerGroup>
-        </ScrollReveal>
-      </div>
-
       {/* Chiffres clés */}
-      <div className="wrap" style={{ paddingTop: 60 }}>
+      <div className="wrap" style={{ paddingTop: 70, paddingBottom: 20 }}>
         <div style={{ textAlign: "center" }}>
           <ScrollReveal direction="up" distance={16}>
             <div className="eyebrow" style={{ marginBottom: 10 }}>
@@ -338,9 +257,9 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* Vidéo d'introduction — bandeau sombre pleine largeur */}
+      {/* Vidéo d'introduction + promesse — bandeau sombre pleine largeur */}
       <ScrollReveal direction="up" distance={30}>
-        <div style={{ marginTop: 70 }}>
+        <div style={{ marginTop: 50 }}>
           <BrandStripe />
           <div style={{ background: "#1a1a1a" }}>
             <div
@@ -355,10 +274,10 @@ export default async function Home() {
               }}
             >
               <VideoSection label={page.videoLabel} />
-              <div style={{ textAlign: "center", color: "#f9f9f9" }}>
+              <div style={{ color: "#f9f9f9" }}>
                 <h2
                   className="nr"
-                  style={{ fontSize: 36, lineHeight: 1.12, margin: "0 0 16px" }}
+                  style={{ fontSize: 34, lineHeight: 1.12, margin: "0 0 14px" }}
                 >
                   {page.videoTitle}
                 </h2>
@@ -367,11 +286,48 @@ export default async function Home() {
                     fontSize: 14.5,
                     lineHeight: 1.6,
                     color: "rgba(249,249,249,.75)",
-                    margin: 0,
+                    margin: "0 0 24px",
                   }}
                 >
                   {page.videoText}
                 </p>
+                <StaggerGroup
+                  style={{ display: "flex", flexDirection: "column", gap: 12 }}
+                >
+                  {page.promesse.map((item) => (
+                    <StaggerItem key={item}>
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: 12,
+                          alignItems: "center",
+                          background: "rgba(255,255,255,0.06)",
+                          border: "1px solid rgba(255,255,255,0.1)",
+                          padding: "12px 16px",
+                          borderRadius: 14,
+                          fontSize: 13.5,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        <span
+                          style={{
+                            flex: "none",
+                            width: 24,
+                            height: 24,
+                            borderRadius: "50%",
+                            background: "#8d7cff",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Logomark size={12} variant="blanc" />
+                        </span>
+                        {item}
+                      </div>
+                    </StaggerItem>
+                  ))}
+                </StaggerGroup>
               </div>
             </div>
           </div>
@@ -380,7 +336,7 @@ export default async function Home() {
       </ScrollReveal>
 
       {/* Formations */}
-      <div className="wrap" style={{ paddingTop: 70 }}>
+      <div className="wrap" style={{ paddingTop: 60, paddingBottom: 60 }}>
         <ScrollReveal direction="up" distance={16}>
           <div
             style={{

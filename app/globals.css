@@ -117,6 +117,14 @@ a {
   transform: translateX(6px);
 }
 
+/* Zoom léger sur l'image des cartes formation au survol */
+.imgzoom {
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.gobtn:hover .imgzoom {
+  transform: scale(1.06);
+}
+
 /* Liens de navigation */
 .navl {
   position: relative;
