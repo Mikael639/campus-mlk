@@ -16,7 +16,7 @@ const legal = {
   siret: "851 941 542 00025",
   ape: "85.59B",
   rcs: "À compléter",
-  siegeSocial: "1 rue Martin Luther King, 94000 Créteil",
+  siegeSocial: "2 rue Tirard, 94000 Créteil",
   directeurPublication: "À compléter",
   emailContact: "campus@mlkgrandparis.com",
   hebergeurNom: "Vercel Inc.",

@@ -16,7 +16,8 @@ const pin = L.divIcon({
   iconAnchor: [17, 44],
 });
 
-const CENTER: [number, number] = [48.7675563, 2.4565759];
+/* 2 rue Tirard, 94000 Créteil */
+const CENTER: [number, number] = [48.7913965, 2.4499309];
 
 export default function CampusMap() {
   return (

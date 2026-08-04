@@ -11,7 +11,7 @@ export const siteSettings = defineType({
       name: 'address',
       title: 'Adresse',
       type: 'string',
-      initialValue: '1 rue Martin Luther King, 94000 Créteil',
+      initialValue: '2 rue Tirard, 94000 Créteil',
     }),
     defineField({
       name: 'email',
@@ -24,7 +24,7 @@ export const siteSettings = defineType({
       name: 'transport',
       title: 'Transport',
       type: 'string',
-      initialValue: 'Tramway T9 (Créteil-Préfecture) · RER D (Créteil-Pompadour)',
+      initialValue: 'Métro ligne 8 (Créteil-Université) · Parking public gratuit',
     }),
     defineField({
       name: 'footerText',

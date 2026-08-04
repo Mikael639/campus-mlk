@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s · MLK Campus",
   },
   description:
-    "MLK Campus est un Centre de Formation d'Apprentis au cœur de Créteil, proposant des formations qualifiantes du niveau 3 au niveau 5 dans des secteurs porteurs. Première rentrée : septembre 2027.",
+    "MLK Campus est un Centre de Formation d'Apprentis situé à Créteil, proposant des formations qualifiantes du niveau 3 au niveau 5 dans des secteurs porteurs. Première rentrée : septembre 2026.",
 };
 
 export default async function RootLayout({

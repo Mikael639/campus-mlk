@@ -7,7 +7,7 @@ import CampusMapLoader from "@/components/CampusMapLoader";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contactez MLK Campus : 1 rue Martin Luther King, 94000 Créteil — campus@mlkgrandparis.com.",
+    "Contactez MLK Campus : 2 rue Tirard, 94000 Créteil — campus@mlkgrandparis.com.",
 };
 
 export default async function ContactPage() {

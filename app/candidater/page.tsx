@@ -3,6 +3,7 @@ import { CandidaterForm } from "@/components/forms";
 import { getFormations } from "@/lib/formations";
 import { getCandidaterPage } from "@/lib/pages";
 import Logomark from "@/components/Logomark";
+import HighlightedText from "@/components/HighlightedText";
 import {
   ScrollReveal,
   StaggerGroup,
@@ -313,7 +314,10 @@ export default async function CandidaterPage() {
                 margin: "0 0 38px",
               }}
             >
-              {page.formText}
+              <HighlightedText
+                text={page.formText}
+                highlight="dans les plus brefs délais."
+              />
             </p>
             <CandidaterForm formations={formations} />
           </div>

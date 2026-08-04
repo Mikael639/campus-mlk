@@ -9,6 +9,7 @@ import VideoSection from "@/components/VideoSection";
 import BrandStripe from "@/components/BrandStripe";
 import EngagementsDiagram from "@/components/EngagementsDiagram";
 import Logomark from "@/components/Logomark";
+import HighlightedText from "@/components/HighlightedText";
 import {
   ScrollReveal,
   StaggerGroup,
@@ -18,8 +19,21 @@ import {
 /* Tons violets dérivés de la charte (Iris/Lilas) pour les tuiles "chiffres clés". */
 const STAT_TONES = ["#8d7cff", "#a084ee", "#ba7eee", "#7a68e0", "#a897f2"];
 
+/* Tons cycliques pour les tuiles "promesse" — cohérents avec le diagramme "Pourquoi". */
+const PROMESSE_TONES: { bg: string; icon: string }[] = [
+  { bg: "#f2e9fb", icon: "#8d7cff" },
+  { bg: "#fbeaf1", icon: "#e84d72" },
+  { bg: "#f5edfc", icon: "#ba7eee" },
+];
+
 /* Logomark à la taille du texte, pour remplacer une lettre dans un titre. */
-function InlineLogomark({ variant }: { variant: "iris" | "framboise" }) {
+function InlineLogomark({
+  variant,
+  scale = 0.6,
+}: {
+  variant: "iris" | "framboise";
+  scale?: number;
+}) {
   return (
     <Image
       src={`/images/logomark-${variant}.png`}
@@ -27,8 +41,8 @@ function InlineLogomark({ variant }: { variant: "iris" | "framboise" }) {
       width={36}
       height={36}
       style={{
-        width: ".6em",
-        height: ".6em",
+        width: `${scale}em`,
+        height: `${scale}em`,
         display: "inline-block",
         margin: "0 1px",
         verticalAlign: "baseline",
@@ -45,9 +59,11 @@ function InlineLogomark({ variant }: { variant: "iris" | "framboise" }) {
 function TextWithLogomark({
   text,
   variant = "iris",
+  scale = 0.6,
 }: {
   text: string;
   variant?: "iris" | "framboise";
+  scale?: number;
 }) {
   const clean = stegaClean(text);
   const words = clean.split(" ");
@@ -62,7 +78,7 @@ function TextWithLogomark({
       {wordIndex > 0 && " "}
       <span style={{ whiteSpace: "nowrap" }}>
         {word.slice(0, i)}
-        <InlineLogomark variant={variant} />
+        <InlineLogomark variant={variant} scale={scale} />
         {word.slice(i + 1)}
       </span>
       {wordIndex < words.length - 1 && " "}
@@ -122,7 +138,11 @@ export default async function Home() {
               }}
             >
               <TextWithLogomark text={page.heroTitleStart} variant="iris" />{" "}
-              <TextWithLogomark text={page.heroWordLogo} variant="framboise" />{" "}
+              <TextWithLogomark
+                text={page.heroWordLogo}
+                variant="framboise"
+                scale={0.85}
+              />{" "}
               {page.heroTitleMiddle}{" "}
               <em style={{ color: "#8d7cff" }}>{page.heroTitleAccent}</em>
             </h1>
@@ -136,7 +156,7 @@ export default async function Home() {
                 margin: "0 0 34px",
               }}
             >
-              {page.heroText}
+              <HighlightedText text={page.heroText} highlight="situé à" />
             </p>
             <div className="pg3 rbtns" style={{ display: "flex", gap: 14 }}>
               <Link href="/candidater" className="btnA gobtn">
@@ -174,6 +194,81 @@ export default async function Home() {
           )}
         </div>
       </ScrollReveal>
+
+      {/* Promesse */}
+      <div className="wrap" style={{ paddingTop: 10 }}>
+        <ScrollReveal direction="up" distance={16}>
+          <StaggerGroup
+            className="rg1"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3,1fr)",
+              gap: 18,
+            }}
+          >
+            {page.promesse.map((item, i) => {
+              const tone = PROMESSE_TONES[i % PROMESSE_TONES.length];
+              return (
+                <StaggerItem key={item}>
+                  <div
+                    className="card lift"
+                    style={{
+                      background: tone.bg,
+                      border: "1px solid rgba(22,22,22,0.06)",
+                      borderRadius: 22,
+                      padding: "26px 24px",
+                      height: "100%",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: "absolute",
+                        right: -18,
+                        bottom: -18,
+                        opacity: 0.12,
+                        pointerEvents: "none",
+                      }}
+                      aria-hidden
+                    >
+                      <Logomark size={80} variant="principal" />
+                    </div>
+                    <span
+                      style={{
+                        position: "relative",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: 44,
+                        height: 44,
+                        borderRadius: "50%",
+                        background: tone.icon,
+                        marginBottom: 18,
+                        boxShadow: `0 10px 22px -10px ${tone.icon}`,
+                      }}
+                    >
+                      <Logomark size={20} variant="blanc" />
+                    </span>
+                    <p
+                      className="nr"
+                      style={{
+                        position: "relative",
+                        fontSize: 17.5,
+                        lineHeight: 1.35,
+                        color: "#1a1a1a",
+                        margin: 0,
+                      }}
+                    >
+                      {item}
+                    </p>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerGroup>
+        </ScrollReveal>
+      </div>
 
       {/* Chiffres clés */}
       <div className="wrap" style={{ paddingTop: 60 }}>

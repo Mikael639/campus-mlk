@@ -45,6 +45,13 @@ export const homePage = defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'promesse',
+      title: 'Promesse (3 engagements courts sous le hero)',
+      type: 'array',
+      of: [defineArrayMember({type: 'string'})],
+      validation: (rule) => rule.max(3),
+    }),
     defineField({name: 'videoTitle', title: 'Titre de la section vidéo', type: 'string'}),
     defineField({name: 'videoText', title: 'Texte de la section vidéo', type: 'text', rows: 3}),
     defineField({name: 'videoLabel', title: 'Libellé du bouton vidéo', type: 'string'}),

@@ -57,6 +57,7 @@ export const HOME_PAGE_QUERY = defineQuery(`
     heroText, heroCta1, heroCta2,
     heroImage { ${imageFragment} },
     stats[] { _key, n, label },
+    promesse,
     videoTitle, videoText, videoLabel,
     formationsTitle,
     pourquoiBadge, pourquoiTitle,

@@ -35,7 +35,7 @@ export type Formation = {
 };
 
 export const DUREE = "12 mois";
-export const RYTHME = "4 jours en entreprise / 1 jour au campus";
+export const RYTHME = "2 jours au campus / 3 jours en entreprise";
 export const MODALITES = "Présentiel";
 
 export async function getFormations(): Promise<Formation[]> {

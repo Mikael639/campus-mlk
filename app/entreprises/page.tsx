@@ -207,9 +207,10 @@ export default async function EntreprisesPage() {
               <StaggerGroup
                 style={{ display: "flex", flexDirection: "column", gap: 12 }}
               >
-                {page.accItems.map((a) => (
+                {page.accItems.map((a, i) => (
                   <StaggerItem key={a}>
                     <div
+                      className="lift"
                       style={{
                         display: "flex",
                         gap: 14,
@@ -224,20 +225,18 @@ export default async function EntreprisesPage() {
                     >
                       <span
                         style={{
-                          width: 24,
-                          height: 24,
+                          width: 26,
+                          height: 26,
                           borderRadius: "50%",
-                          background: "#d1ff5e",
-                          color: "#1a1a1a",
+                          background: ACCENT_COLORS[i % ACCENT_COLORS.length],
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          fontSize: 12,
-                          fontWeight: 700,
                           flexShrink: 0,
+                          boxShadow: `0 8px 18px -9px ${ACCENT_COLORS[i % ACCENT_COLORS.length]}`,
                         }}
                       >
-                        ✓
+                        <Logomark size={13} variant="blanc" />
                       </span>
                       <span>{a}</span>
                     </div>

@@ -24,6 +24,7 @@ export type HomePage = {
   heroImage?: SanityImage;
   stats: { _key: string; n: string; label: string }[];
   videoTitle: string;
+  promesse: string[];
   videoText: string;
   videoLabel: string;
   formationsTitle: string;
