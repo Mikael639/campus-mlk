@@ -12,6 +12,11 @@ import {
 } from "@/lib/formations";
 import { urlForImage } from "@/lib/sanity/image";
 import Logomark from "@/components/Logomark";
+import {
+  ScrollReveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/ScrollReveal";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -55,98 +60,106 @@ export default async function FormationPage({ params }: Props) {
       </div>
 
       {/* Hero */}
-      <div
-        className="wrap rg1"
-        style={{
-          paddingTop: 34,
-          paddingBottom: 50,
-          display: "grid",
-          gridTemplateColumns: "1.1fr .9fr",
-          gap: 48,
-          alignItems: "center",
-        }}
-      >
-        <div>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 7,
-              padding: "7px 14px",
-              borderRadius: 30,
-              background: color,
-              color: "#1a1a1a",
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: ".06em",
-              textTransform: "uppercase",
-              marginBottom: 18,
-            }}
-          >
-            {f.cat} · {f.level}
+      <ScrollReveal direction="up" distance={20} duration={0.55}>
+        <div
+          className="wrap rg1"
+          style={{
+            paddingTop: 34,
+            paddingBottom: 50,
+            display: "grid",
+            gridTemplateColumns: "1.1fr .9fr",
+            gap: 48,
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 7,
+                padding: "7px 14px",
+                borderRadius: 30,
+                background: color,
+                color: "#1a1a1a",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: ".06em",
+                textTransform: "uppercase",
+                marginBottom: 18,
+              }}
+            >
+              {f.cat} · {f.level}
+            </div>
+            <h1
+              className="nr"
+              style={{ fontSize: 44, lineHeight: 1.06, margin: "0 0 10px" }}
+            >
+              {f.title}
+            </h1>
+            <div
+              style={{
+                fontSize: 14,
+                color: "#ba7eee",
+                fontWeight: 600,
+                marginBottom: 20,
+              }}
+            >
+              {f.cert}
+            </div>
+            <p
+              className="nr"
+              style={{
+                fontSize: 18,
+                lineHeight: 1.55,
+                color: "#2b2b2b",
+                margin: "0 0 30px",
+                fontStyle: "italic",
+              }}
+            >
+              {f.tagline}
+            </p>
+            <div className="rbtns" style={{ display: "flex", gap: 14 }}>
+              <Link href="/candidater" className="btnA gobtn">
+                Candidater à cette formation{" "}
+                <span className="ar" style={{ display: "inline-flex" }}>
+                  <Logomark size={17} variant="iris" />
+                </span>
+              </Link>
+              <Link href="/entreprises" className="btnO gobtn">
+                Recruter un apprenti <span className="ar">→</span>
+              </Link>
+            </div>
           </div>
-          <h1
-            className="nr"
-            style={{ fontSize: 44, lineHeight: 1.06, margin: "0 0 10px" }}
-          >
-            {f.title}
-          </h1>
           <div
-            style={{
-              fontSize: 14,
-              color: "#ba7eee",
-              fontWeight: 600,
-              marginBottom: 20,
-            }}
+            className="gobtn"
+            style={{ overflow: "hidden", borderRadius: 18 }}
           >
-            {f.cert}
-          </div>
-          <p
-            className="nr"
-            style={{
-              fontSize: 18,
-              lineHeight: 1.55,
-              color: "#2b2b2b",
-              margin: "0 0 30px",
-              fontStyle: "italic",
-            }}
-          >
-            {f.tagline}
-          </p>
-          <div className="rbtns" style={{ display: "flex", gap: 14 }}>
-            <Link href="/candidater" className="btnA gobtn">
-              Candidater à cette formation{" "}
-              <span className="ar" style={{ display: "inline-flex" }}>
-                <Logomark size={17} variant="iris" />
-              </span>
-            </Link>
-            <Link href="/entreprises" className="btnO gobtn">
-              Recruter un apprenti <span className="ar">→</span>
-            </Link>
+            {f.image?.asset ? (
+              <Image
+                className="imgzoom"
+                src={urlForImage(f.image).width(1000).height(760).url()}
+                alt={f.image.alt ?? ""}
+                width={500}
+                height={340}
+                priority
+                style={{
+                  width: "100%",
+                  height: 340,
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            ) : (
+              <div
+                className="ph imgzoom"
+                data-l={f.ph}
+                style={{ height: 340 }}
+              />
+            )}
           </div>
         </div>
-        {f.image?.asset ? (
-          <Image
-            src={urlForImage(f.image).width(1000).height(760).url()}
-            alt={f.image.alt ?? ""}
-            width={500}
-            height={340}
-            priority
-            style={{
-              width: "100%",
-              height: 340,
-              objectFit: "cover",
-              borderRadius: 18,
-            }}
-          />
-        ) : (
-          <div
-            className="ph"
-            data-l={f.ph}
-            style={{ height: 340, borderRadius: 18 }}
-          />
-        )}
-      </div>
+      </ScrollReveal>
 
       {/* Contenu + panneau latéral */}
       <div
@@ -160,87 +173,111 @@ export default async function FormationPage({ params }: Props) {
         }}
       >
         <div>
-          <div className="eyebrow" style={{ marginBottom: 14 }}>
-            Présentation
-          </div>
-          <p
-            style={{
-              fontSize: 16,
-              lineHeight: 1.7,
-              color: "#3d3d3d",
-              margin: "0 0 40px",
-            }}
-          >
-            {f.presentation}
-          </p>
+          <ScrollReveal direction="up" distance={16}>
+            <div className="eyebrow" style={{ marginBottom: 14 }}>
+              Présentation
+            </div>
+            <p
+              style={{
+                fontSize: 16,
+                lineHeight: 1.7,
+                color: "#3d3d3d",
+                margin: "0 0 40px",
+              }}
+            >
+              {f.presentation}
+            </p>
 
-          <div className="eyebrow" style={{ marginBottom: 18 }}>
-            Compétences acquises
-          </div>
-          <div
+            <div className="eyebrow" style={{ marginBottom: 18 }}>
+              Compétences acquises
+            </div>
+          </ScrollReveal>
+          <StaggerGroup
             style={{
-              display: "flex",
-              flexDirection: "column",
+              display: "grid",
+              gridTemplateColumns: "repeat(2,1fr)",
               gap: 12,
               marginBottom: 44,
             }}
           >
-            {f.skills.map((s) => (
-              <div
+            {f.skills.map((s, i) => (
+              <StaggerItem
                 key={s}
                 style={{
-                  display: "flex",
-                  gap: 14,
-                  alignItems: "flex-start",
-                  padding: "14px 18px",
-                  background: "#ffffff",
-                  border: "1px solid rgba(22,22,22,.1)",
-                  borderRadius: 12,
+                  gridColumn:
+                    i === f.skills.length - 1 && f.skills.length % 2 !== 0
+                      ? "span 2"
+                      : undefined,
                 }}
               >
+                <div
+                  className="lift"
+                  style={{
+                    display: "flex",
+                    gap: 12,
+                    alignItems: "center",
+                    padding: "14px 16px",
+                    background: "#ffffff",
+                    border: "1px solid rgba(22,22,22,.1)",
+                    borderLeftWidth: 3,
+                    borderLeftColor: color,
+                    borderRadius: 12,
+                    height: "100%",
+                  }}
+                >
+                  <span
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: 26,
+                      height: 26,
+                      borderRadius: "50%",
+                      background: color,
+                      flex: "none",
+                    }}
+                  >
+                    <Logomark size={12} variant="blanc" />
+                  </span>
+                  <span
+                    style={{ fontSize: 13.5, lineHeight: 1.4, color: "#2b2b2b" }}
+                  >
+                    {s}
+                  </span>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+
+          <ScrollReveal direction="up" distance={16}>
+            <div className="eyebrow" style={{ marginBottom: 18 }}>
+              Débouchés
+            </div>
+          </ScrollReveal>
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+            {f.debouches.map((d) => (
+              <StaggerItem key={d}>
                 <span
+                  className="pillhov"
                   style={{
                     display: "inline-block",
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
+                    padding: "10px 18px",
+                    borderRadius: 30,
                     background: color,
-                    marginTop: 6,
-                    flex: "none",
+                    color: "#1a1a1a",
+                    fontSize: 13.5,
+                    fontWeight: 600,
                   }}
-                />
-                <span
-                  style={{ fontSize: 14.5, lineHeight: 1.5, color: "#2b2b2b" }}
                 >
-                  {s}
+                  {d}
                 </span>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
-
-          <div className="eyebrow" style={{ marginBottom: 18 }}>
-            Débouchés
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-            {f.debouches.map((d) => (
-              <span
-                key={d}
-                style={{
-                  padding: "10px 18px",
-                  borderRadius: 30,
-                  background: color,
-                  color: "#1a1a1a",
-                  fontSize: 13.5,
-                  fontWeight: 600,
-                }}
-              >
-                {d}
-              </span>
-            ))}
-          </div>
+          </StaggerGroup>
         </div>
 
         {/* Panneau infos pratiques */}
+        <ScrollReveal direction="left" distance={26} duration={0.55}>
         <div className="rstatic" style={{ position: "sticky", top: 96 }}>
           <div
             style={{
@@ -323,6 +360,7 @@ export default async function FormationPage({ params }: Props) {
             </Link>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </div>
   );

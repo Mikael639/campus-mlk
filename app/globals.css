@@ -125,6 +125,15 @@ a {
   transform: scale(1.06);
 }
 
+/* Pastilles "Débouchés" — léger effet d'échelle au survol */
+.pillhov {
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  cursor: default;
+}
+.pillhov:hover {
+  transform: scale(1.06);
+}
+
 /* Liens de navigation */
 .navl {
   position: relative;
