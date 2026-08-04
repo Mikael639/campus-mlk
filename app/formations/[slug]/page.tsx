@@ -193,6 +193,7 @@ export default async function FormationPage({ params }: Props) {
             </div>
           </ScrollReveal>
           <StaggerGroup
+            className="rg1"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2,1fr)",

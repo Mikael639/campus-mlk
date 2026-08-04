@@ -347,21 +347,13 @@ a {
 }
 
 /* Responsive */
-@media (max-width: 1020px) {
-  .rnavwrap {
-    flex-wrap: wrap;
-    row-gap: 12px;
+@media (max-width: 860px) {
+  .rnavlinks,
+  .rcta-desktop {
+    display: none !important;
   }
-  .rnavlinks {
-    order: 3;
-    width: 100%;
-    overflow-x: auto;
-    gap: 20px !important;
-    -webkit-overflow-scrolling: touch;
-    justify-content: flex-start;
-  }
-  .rnavlinks a {
-    white-space: nowrap;
+  .navburger {
+    display: flex !important;
   }
 }
 @media (max-width: 768px) {
