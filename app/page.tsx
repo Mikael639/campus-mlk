@@ -213,8 +213,8 @@ export default async function Home() {
                 <div
                   style={{
                     background: STAT_TONES[i % STAT_TONES.length],
-                    borderRadius: 20,
-                    padding: "22px 14px",
+                    borderRadius: 16,
+                    padding: "16px 14px",
                     position: "relative",
                     overflow: "hidden",
                     height: "100%",
@@ -224,14 +224,14 @@ export default async function Home() {
                   <div
                     style={{
                       position: "absolute",
-                      right: -26,
-                      bottom: -26,
+                      right: -18,
+                      bottom: -18,
                       opacity: 0.18,
                       pointerEvents: "none",
                     }}
                     aria-hidden
                   >
-                    <Logomark size={104} variant="blanc" />
+                    <Logomark size={72} variant="blanc" />
                   </div>
                   <div
                     className="nr"
